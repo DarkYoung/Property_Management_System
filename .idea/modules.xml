@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Property_Management_System.iml" filepath="$PROJECT_DIR$/Property_Management_System.iml" />
       <module fileurl="file://$PROJECT_DIR$/pms.iml" filepath="$PROJECT_DIR$/pms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pms.iml" filepath="$PROJECT_DIR$/pms.iml" />
     </modules>
   </component>
 </project>

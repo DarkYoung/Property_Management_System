@@ -10,9 +10,8 @@
         <module name="Property_Management_System" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8">
       <module name="pms" target="1.8" />
-      <module name="Property_Management_System" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

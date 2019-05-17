@@ -2,32 +2,32 @@ package com.example.pms.json;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import org.springframework.core.io.DefaultResourceLoader;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.util.ResourceUtils;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 
 public class JsonUtils {
+    private static ResourceLoader resourceLoader = new DefaultResourceLoader();
 
-    public static String FILE_PATH = "src/main/java/com/example/pms/json/fields.json";
-
-    public static String readFile(String Path){
+    public static String readFile() {
         BufferedReader reader = null;
         String laststr = "";
-        try{
-            FileInputStream fileInputStream = new FileInputStream(Path);
-            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, "UTF-8");
+        try {
+            Resource resource = resourceLoader.getResource("classpath:fields.json");
+            InputStreamReader inputStreamReader = new InputStreamReader(resource.getInputStream(), "UTF-8");
             reader = new BufferedReader(inputStreamReader);
             String tempString = null;
-            while((tempString = reader.readLine()) != null){
+            while ((tempString = reader.readLine()) != null) {
                 laststr += tempString;
             }
             reader.close();
-        }catch(IOException e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally{
-            if(reader != null){
+        } finally {
+            if (reader != null) {
                 try {
                     reader.close();
                 } catch (IOException e) {
@@ -38,7 +38,9 @@ public class JsonUtils {
         return laststr;
     }
 
-    public static JSONObject stringToJSONObject(String jsonString, String entity){
+    public static JSONObject stringToJSONObject(String jsonString, String entity) {
+        if (jsonString == null || entity == null)
+            return new JSONObject();
         JSONObject jsonObject = JSON.parseObject(jsonString);
         return jsonObject.getJSONObject(entity);
     }

@@ -15,7 +15,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import static com.example.pms.json.JsonUtils.FILE_PATH;
 import static com.example.pms.json.JsonUtils.readFile;
 import static com.example.pms.json.JsonUtils.stringToJSONObject;
 
@@ -27,7 +26,7 @@ public class ParkingController {
     @Autowired
     private ParkingService parkingService;
 
-    private String str = readFile(FILE_PATH);
+    private String str = readFile();
     private JSONObject fieldOfPks = stringToJSONObject(str, "Attrs_zh");
     private Map<String, String> fieldOfPksMap = JSONObject.toJavaObject(fieldOfPks, Map.class);
 

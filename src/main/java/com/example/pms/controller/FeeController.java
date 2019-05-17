@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.lang.reflect.Field;
 import java.util.*;
 
-import static com.example.pms.json.JsonUtils.FILE_PATH;
 import static com.example.pms.json.JsonUtils.readFile;
 import static com.example.pms.json.JsonUtils.stringToJSONObject;
 
@@ -26,7 +25,7 @@ public class FeeController {
 
     @Autowired
     private FeeService feeService;
-    private String str = readFile(FILE_PATH);
+    private String str = readFile();
     private JSONObject fieldOfObjs = stringToJSONObject(str, "Attrs_zh");
     private Map<String, String> fieldOfObjMap = JSONObject.toJavaObject(fieldOfObjs, Map.class);
 
@@ -114,7 +113,7 @@ public class FeeController {
 
     private void addPksObjects(ModelAndView mav, List list, Class type) {
         List<Field> fields = Arrays.asList(type.getDeclaredFields());
-        String str = readFile(FILE_PATH);
+        String str = readFile();
         JSONObject fieldOfObjs = stringToJSONObject(str, "Attrs_zh");
         Map<String, String> fieldOfObjMap = JSONObject.toJavaObject(fieldOfObjs, Map.class);
         mav.addObject("FeeList", list);

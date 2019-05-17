@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.lang.reflect.Field;
 import java.util.*;
 
-import static com.example.pms.json.JsonUtils.FILE_PATH;
 import static com.example.pms.json.JsonUtils.readFile;
 import static com.example.pms.json.JsonUtils.stringToJSONObject;
 
@@ -34,7 +33,7 @@ public class PropertyController {
 
     @Autowired
     private FeeService feeService;
-    private String str = readFile(FILE_PATH);
+    private String str = readFile();
     private JSONObject fieldOfObjs = stringToJSONObject(str, "Attrs_zh");
     private Map<String, String> fieldOfObjMap = JSONObject.toJavaObject(fieldOfObjs, Map.class);
 
