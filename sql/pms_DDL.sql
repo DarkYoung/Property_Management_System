@@ -221,4 +221,5 @@ CREATE TABLE other_income (
   income_fee  NUMERIC (20,2) NOT NULL,
   PRIMARY KEY (other_id)
 )
-SET FOREIGN_KEY_CHECKS = 1;
+
+-- SET FOREIGN_KEY_CHECKS = 1;
