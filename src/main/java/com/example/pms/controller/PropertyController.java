@@ -41,6 +41,9 @@ public class PropertyController {
     @RequestMapping({"/index", "/"})
     public ModelAndView handleRequest() {
         ModelAndView mav = new ModelAndView("index/property");
+        Page page = new Page();
+        page.setPageIndex(Page.Index.PROPERTY);
+        mav.addObject("page", page);
         mav.addObject("title", "房屋住户管理");
         return mav;
     }
@@ -90,6 +93,9 @@ public class PropertyController {
         mav.addObject("managementFeeFields", managementFeeFields);
         mav.addObject("propertyFeeList", feeMapper.listProFeesNeeded());
         mav.addObject("managementFeeList", feeMapper.listManFeesNeeded());
+        Page page = new Page();
+        page.setPageIndex(Page.Index.PROPERTY);
+        mav.addObject("page", page);
         mav.addObject("title", "住户缴纳费用账单");
         return mav;
     }
@@ -122,6 +128,9 @@ public class PropertyController {
             mav.addObject("propertyFeeList", feeMapper.listProFeesNeeded());
             mav.addObject("managementFeeList", feeMapper.listManFeesNeeded());
         }
+        Page page = new Page();
+        page.setPageIndex(Page.Index.PROPERTY);
+        mav.addObject("page", page);
         mav.addObject("title", "筛选住户需缴纳费用账单");
         return mav;
     }
@@ -145,6 +154,9 @@ public class PropertyController {
         mav.addObject("residenceList", residences);
         mav.addObject("fields", fields);
         mav.addObject("FOEMap", fieldOfObjMap);
+        Page page = new Page();
+        page.setPageIndex(Page.Index.PROPERTY);
+        mav.addObject("page", page);
     }
 
 

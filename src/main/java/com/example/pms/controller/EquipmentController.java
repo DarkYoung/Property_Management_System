@@ -3,6 +3,7 @@ package com.example.pms.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.example.pms.bean.Equipment;
 import com.example.pms.bean.EquipmentSearch;
+import com.example.pms.bean.Page;
 import com.example.pms.bean.RepairOrder;
 import com.example.pms.dao.EquipmentMapper;
 import com.example.pms.util.SearchDateUtil;
@@ -35,6 +36,9 @@ public class EquipmentController {
     @RequestMapping({"/index", "/"})
     public ModelAndView handleRequest() {
         ModelAndView mav = new ModelAndView("index/equipment");
+        Page page = new Page();
+        page.setPageIndex(Page.Index.EQUIPMENT);
+        mav.addObject("page", page);
         mav.addObject("title", "设备管理");
         return mav;
     }
@@ -46,6 +50,9 @@ public class EquipmentController {
         mav.addObject("FOEMap", fieldOfObjMap);
         mav.addObject("equipmentFields", inspectFields);
         mav.addObject("equipmentList", equipmentMapper.listWaitForRepair());
+        Page page = new Page();
+        page.setPageIndex(Page.Index.EQUIPMENT);
+        mav.addObject("page", page);
         mav.addObject("title", "待维修");
         return mav;
     }
@@ -80,6 +87,9 @@ public class EquipmentController {
             totalFee += order.getRepairFee();
         }
         mav.addObject("totalFee", totalFee);
+        Page page = new Page();
+        page.setPageIndex(Page.Index.EQUIPMENT);
+        mav.addObject("page", page);
         mav.addObject("title", "报修记录");
         return mav;
     }

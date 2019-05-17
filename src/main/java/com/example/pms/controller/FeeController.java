@@ -1,10 +1,7 @@
 package com.example.pms.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.example.pms.bean.FeeReport;
-import com.example.pms.bean.FeeSearch;
-import com.example.pms.bean.ManagementFeeRecord;
-import com.example.pms.bean.PropertyFeeRecord;
+import com.example.pms.bean.*;
 import com.example.pms.dao.FeeMapper;
 import com.example.pms.service.FeeService;
 import com.example.pms.util.SearchDateUtil;
@@ -36,6 +33,9 @@ public class FeeController {
     @RequestMapping({"/index", "/"})
     public ModelAndView handleRequest() {
         ModelAndView mav = new ModelAndView("index/fee");
+        Page page = new Page();
+        page.setPageIndex(Page.Index.FEE);
+        mav.addObject("page", page);
         mav.addObject("title", "费用管理");
         return mav;
     }
@@ -47,6 +47,9 @@ public class FeeController {
         mav.addObject("FOEMap", fieldOfObjMap);
         mav.addObject("propertyFeeFields", propertyFeeFields);
         mav.addObject("propertyFeeList", feeMapper.listProFeesNeeded());
+        Page page = new Page();
+        page.setPageIndex(Page.Index.FEE);
+        mav.addObject("page", page);
         mav.addObject("title", "物业费收入情况");
         return mav;
     }
@@ -59,6 +62,9 @@ public class FeeController {
         mav.addObject("FOEMap", fieldOfObjMap);
         mav.addObject("managementFeeFields", managementFeeFields);
         mav.addObject("managementFeeList", feeMapper.listManFeesNeeded());
+        Page page = new Page();
+        page.setPageIndex(Page.Index.FEE);
+        mav.addObject("page", page);
         mav.addObject("title", "停车收费情况");
         return mav;
     }
@@ -100,6 +106,9 @@ public class FeeController {
         }
         mav.addObject("totalIn", totalIn);
         mav.addObject("totalOut", totalOut);
+        Page page = new Page();
+        page.setPageIndex(Page.Index.FEE);
+        mav.addObject("page", page);
         return mav;
     }
 

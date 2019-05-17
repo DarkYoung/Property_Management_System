@@ -34,6 +34,9 @@ public class ParkingController {
     @RequestMapping({"/index", "/"})
     public ModelAndView handleRequest() {
         ModelAndView mav = new ModelAndView("index/parking");
+        Page page = new Page();
+        page.setPageIndex(Page.Index.PARKING);
+        mav.addObject("page", page);
         mav.addObject("title", "停车管理");
         return mav;
     }
@@ -113,6 +116,9 @@ public class ParkingController {
         mav.addObject("pksList", pkses);
         mav.addObject("fields", fields);
         mav.addObject("FOEMap", fieldOfPksMap);
+        Page page = new Page();
+        page.setPageIndex(Page.Index.PARKING);
+        mav.addObject("page", page);
     }
 
 }

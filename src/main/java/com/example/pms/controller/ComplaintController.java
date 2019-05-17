@@ -3,6 +3,7 @@ package com.example.pms.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.example.pms.bean.ComplaintRecord;
 import com.example.pms.bean.ComplaintSearch;
+import com.example.pms.bean.Page;
 import com.example.pms.dao.ComplaintMapper;
 import com.example.pms.util.SearchDateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,9 @@ public class ComplaintController {
     @RequestMapping({"/index", "/"})
     public ModelAndView handleRequest() {
         ModelAndView mav = new ModelAndView("index/complaint");
+        Page page = new Page();
+        page.setPageIndex(Page.Index.COMPLAINT);
+        mav.addObject("page", page);
         mav.addObject("title", "投诉意见管理");
         return mav;
     }
@@ -61,6 +65,9 @@ public class ComplaintController {
         mav.addObject("complaintList", complaintMapper.listComplaintRecords(sqlFrom, sqlTo,
                 complaintSearch.getCommunityName(), complaintSearch.getComplaintType(),
                 complaintSearch.getUnitNum(), complaintSearch.getFloorNum(), complaintSearch.getRoomNum()));
+        Page page = new Page();
+        page.setPageIndex(Page.Index.COMPLAINT);
+        mav.addObject("page", page);
         mav.addObject("title", "投诉意见查询");
         return mav;
     }
